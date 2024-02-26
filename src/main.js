@@ -1,1 +1,13 @@
-fetch('https://pixabay.com/api/?key=13766037-6b94ce31e5d6d188a57cfe399&q=yellow+flowers&image_type=photo').then(responce => console.log(responce) ).catch(error => console.error(error))
+import Render from "./js/render-functions.js";
+import PixabayAPI from "./js/pixabay-api.js";
+
+const renderInst = new Render();
+const pixabayInst = new PixabayAPI();
+
+const searchImg = document.querySelector('.form-search');
+
+searchImg.addEventListener('submit', event => {
+    event.preventDefault();
+    renderInst.showLoadingMsg();
+    pixabayInst.searchImg(searchImg.elements['search_string'].value.trim());
+});

@@ -22,8 +22,9 @@
   -webkit-text-size-adjust: 100%;
 }
 
-body {
-  width: 100%;
+.conteiner {
+  width: 1128px;
+  margin: 0 auto;
 }
 
 .form-search {
@@ -45,6 +46,7 @@ input[type='text'] {
   height: 40px;
   padding: 7px 15px;
   border-radius: 4px;
+  outline-offset: -1px;
   outline: transparent;
   border: 1px solid #808080;
 }
@@ -76,22 +78,13 @@ button[type='submit']:focus {
   background-color: #6c8cff;
 }
 
-.loading-messege {
-  width: 256px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  margin: 0 auto;
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+.gallery li {
+  width: (100% - 48px)/3;
+  border: 1px solid #808080;
 }

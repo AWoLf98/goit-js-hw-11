@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./img/button-x.svg" />
     <title>Vanilla App Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,12 +14,17 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <form class="form-search">
-      <input type="text" name="search_string" id="search_string" placeholder="Search images..."/>
-      <button type="submit">Start</button>
-    </form>
-    <p class="loading-messege visually-hidden">Loading images, please wait...</p>
-    <ul class="gallery"></ul>
-    <script type="module" src="./main.js"></script>
+    <div class="conteiner">
+      <form class="form-search">
+        <input type="text" name="search_string" id="search_string" placeholder="Search images..."/>
+        <button type="submit">Start</button>
+      </form>
+      <div class="loader-section visually-hidden">
+        <p class="loading-messege">Loading images, please wait...</p>
+        <span class="loader"></span>
+      </div>
+      <ul class="gallery"></ul>
+      <script type="module" src="./main.js"></script>
+    </div>
   </body>
 </html>
