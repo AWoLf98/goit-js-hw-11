@@ -10,4 +10,5 @@ searchImg.addEventListener('submit', event => {
     event.preventDefault();
     renderInst.showLoadingMsg();
     pixabayInst.searchImg(searchImg.elements['search_string'].value.trim());
+    renderInst.showLoadingMsg();
 });

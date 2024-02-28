@@ -16,7 +16,7 @@ export default class PixabayAPI {
     this.#parametrs['q'] = q;
 
     fetch(`https://pixabay.com/api/?${new URLSearchParams(this.#parametrs)}`)
-      .then(responce => console.log(responce))
+      .then(responce => console.log(responce)).then(responce => console.log(responce))
       .catch(error => console.error(error));
   }
 }
