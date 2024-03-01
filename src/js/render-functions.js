@@ -3,7 +3,7 @@ import SimpleLightbox from 'simplelightbox';
 
 import 'izitoast/dist/css/iziToast.min.css';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import '../css/msg-styles.css';
+import './css/msg-styles.css';
 
 export default class Render {
   #loadingMsg;
