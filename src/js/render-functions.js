@@ -1,11 +1,10 @@
 // У файлі render-functions.js створи функції для відображення елементів інтерфейсу.
 import iziToast from 'izitoast';
-import SimpleLightbox from "simplelightbox";
+import SimpleLightbox from 'simplelightbox';
 
 import 'izitoast/dist/css/iziToast.min.css';
-import "simplelightbox/dist/simple-lightbox.min.css";
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import '../css/msg-styles.css';
-
 
 export default class Render {
   #loadingMsg;
@@ -14,11 +13,101 @@ export default class Render {
     this.#loadingMsg = loadingMsg;
   }
 
-  showGalery() {
-    
+  showGalery(objData, gallery) {
+    gallery.innerHTML = objData.hits.reduce((accumulator, currentValue) => {
+      return accumulator + 
+      `<li>
+            <a href="${currentValue.largeImageURL}">
+              <img src="${currentValue.webformatURL}" alt="${currentValue.tags}"/>
+            </a>
+            <ul class="img-description">
+            <li>
+              <span data-header>
+                Likes
+              </span>
+              <span data-count>
+                ${currentValue.likes}
+              </span>
+            </li>
+            <li>
+              <span data-header>
+                Views
+              </span>
+              <span data-count>
+                ${currentValue.views}
+              </span>
+            </li>
+            <li>
+              <span data-header>
+                Comments
+              </span>
+              <span data-count>
+                ${currentValue.comments}
+              </span>
+            </li>
+            <li>
+              <span data-header>
+                Downloads
+              </span>
+              <span data-count>
+                ${currentValue.downloads}
+              </span>
+            </li>
+          </ul>
+        </li>`;
+    }, '');
+    // webformatURL
+    // elementsGallery.forEach(element => {
+    //   galerypaint += `<li>
+    //         <a href="${element.largeImageURL}">
+    //           <img src="${element.webformatURL}" alt="${element.tags}"/>
+    //         </a>
+    //         <ul class="img-description">
+    //         <li>
+    //           <span data-header>
+    //             Likes
+    //           </span>
+    //           <span data-count>
+    //             ${element.likes}
+    //           </span>
+    //         </li>
+    //         <li>
+    //           <span data-header>
+    //             Views
+    //           </span>
+    //           <span data-count>
+    //             ${element.views}
+    //           </span>
+    //         </li>
+    //         <li>
+    //           <span data-header>
+    //             Comments
+    //           </span>
+    //           <span data-count>
+    //             ${element.comments}
+    //           </span>
+    //         </li>
+    //         <li>
+    //           <span data-header>
+    //             Downloads
+    //           </span>
+    //           <span data-count>
+    //             ${element.downloads}
+    //           </span>
+    //         </li>
+    //       </ul>
+    //     </li>`;
+    // });
+
+    // gallery.innerHTML = galerypaint;
+
+    var lightbox = new SimpleLightbox('.gallery a', {
+      /* options */
+    });
+    lightbox.show();
   }
 
-  showLoadingMsg() {
+  toggleLoadingMsg() {
     document
       .querySelector(`.${this.#loadingMsg}`)
       .classList.toggle('visually-hidden');

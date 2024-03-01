@@ -5,18 +5,38 @@
     <link rel="icon" type="image/svg+xml" href="./img/button-x.svg" />
     <title>Vanilla App Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        white-space: nowrap;
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+      } */
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <div class="conteiner">
       <form class="form-search">
-        <input type="text" name="search_string" id="search_string" placeholder="Search images..."/>
+        <input
+          type="text"
+          name="search_string"
+          id="search_string"
+          placeholder="Search images..."
+        />
         <button type="submit">Start</button>
       </form>
       <div class="loader-section visually-hidden">
