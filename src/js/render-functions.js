@@ -3,7 +3,7 @@ import SimpleLightbox from 'simplelightbox';
 
 import 'izitoast/dist/css/iziToast.min.css';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import './css/msg-styles.css';
+import '../css/msg-styles.css';
 
 export default class Render {
   #loadingMsg;
@@ -97,7 +97,7 @@ export default class Render {
       color: '#EF4040',
       iconText: 'Close',
       iconColor: '#FAFAFB',
-      iconUrl: '../img/button-x.svg',
+      iconUrl: './img/button-x.svg',
       maxWidth: '432',
       zindex: 999,
       close: true,
