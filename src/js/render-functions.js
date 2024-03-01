@@ -1,4 +1,3 @@
-// У файлі render-functions.js створи функції для відображення елементів інтерфейсу.
 import iziToast from 'izitoast';
 import SimpleLightbox from 'simplelightbox';
 

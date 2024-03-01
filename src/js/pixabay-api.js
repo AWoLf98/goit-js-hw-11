@@ -1,5 +1,3 @@
-// У файлі pixabay-api.js зберігай функції для HTTP-запитів.
-
 export default class PixabayAPI {
   #parametrs;
 
