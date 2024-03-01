@@ -96,7 +96,7 @@ button[type='submit']:focus {
 }
 
 .gallery img {
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .img-description {
