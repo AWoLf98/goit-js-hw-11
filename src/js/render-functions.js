@@ -8,18 +8,33 @@ import '../css/msg-styles.css';
 
 export default class Render {
   #loadingMsg;
+  #selector;
+  #lightbox;
 
-  constructor(loadingMsg = 'loader-section') {
+  constructor(loadingMsg = 'loader-section', selector = '.gallery') {
     this.#loadingMsg = loadingMsg;
+    this.#selector = selector;
+    this.#lightbox = new SimpleLightbox(`${this.#selector} a`);
   }
 
-  showGalery(objData, gallery) {
-    gallery.innerHTML = objData.hits.reduce((accumulator, currentValue) => {
-      return accumulator + 
-      `<li>
+  showGalery(objData) {
+    gallery.innerHTML = '';
+    
+    if (!objData.total) {
+      this.showErrorMsg();
+      return;
+    }
+    
+    const gallery = document.querySelector(this.#selector);
+    
+    gallery.innerHTML = objData.hits.reduce(
+      (accumulator, currentValue) => {
+        return (
+          accumulator +
+          `<li>
             <a href="${currentValue.largeImageURL}">
               <img src="${currentValue.webformatURL}" alt="${currentValue.tags}"/>
-            </a>
+              </a>
             <ul class="img-description">
             <li>
               <span data-header>
@@ -27,39 +42,41 @@ export default class Render {
               </span>
               <span data-count>
                 ${currentValue.likes}
-              </span>
+                </span>
             </li>
             <li>
               <span data-header>
-                Views
+              Views
               </span>
               <span data-count>
-                ${currentValue.views}
+              ${currentValue.views}
               </span>
-            </li>
-            <li>
+              </li>
+              <li>
               <span data-header>
-                Comments
+              Comments
               </span>
               <span data-count>
-                ${currentValue.comments}
+              ${currentValue.comments}
               </span>
-            </li>
-            <li>
+              </li>
+              <li>
               <span data-header>
-                Downloads
+              Downloads
               </span>
               <span data-count>
                 ${currentValue.downloads}
               </span>
             </li>
           </ul>
-        </li>`;
-    }, '');
+        </li>`
+        );
+      },
+      ''
+      );
 
-    var lightbox = new SimpleLightbox('.gallery a');
-    lightbox.show();
-  }
+      this.#lightbox.refresh();
+    }
 
   toggleLoadingMsg() {
     document
@@ -67,12 +84,12 @@ export default class Render {
       .classList.toggle('visually-hidden');
   }
 
-  showFalseRenderMsg() {
-    console.log('showFalseRenderMsg');
+  showErrorMsg(
+    msg = 'Sorry, there are no images matching your search query. Please, try again!'
+  ) {
     iziToast.show({
       class: 'error-msg',
-      message:
-        'Sorry, there are no images matching your search query. Please, try again!',
+      message: msg,
       messageColor: '#FAFAFB',
       messageSize: '16',
       messageLineHeight: '24',
@@ -87,7 +104,7 @@ export default class Render {
       closeOnEscape: true,
       displayMode: 2,
       position: 'topRight',
-      timeout: 50000,
+      timeout: 5000,
       animateInside: false,
       drag: false,
       progressBarColor: '#B51B1B',

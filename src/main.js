@@ -8,15 +8,15 @@ const searchImg = document.querySelector('.form-search');
 
 searchImg.addEventListener('submit', event => {
   event.preventDefault();
-
-  const gallery = document.querySelector('.gallery');
+  const searchTerm = searchImg.elements['search_string'].value.trim();
+  if (!searchTerm) {
+    renderInst.showErrorMsg('Empty field!');
+    return;
+  }
 
   renderInst.toggleLoadingMsg();
-  pixabayInst
-    .searchImg(searchImg.elements['search_string'].value.trim())
-    .then(data => {
-      renderInst.showGalery(data, gallery);
-      renderInst.toggleLoadingMsg();
-    });
-  renderInst.toggleLoadingMsg();
+  pixabayInst.searchImg(searchTerm).then(data => {
+    renderInst.toggleLoadingMsg();
+    renderInst.showGalery(data);
+  });
 });
