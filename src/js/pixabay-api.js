@@ -17,7 +17,16 @@ export default class PixabayAPI {
     return fetch(
       `https://pixabay.com/api/?${new URLSearchParams(this.#parametrs)}`
     )
-      .then(responce => responce.json())
-      .catch(error => error);
+      .then(responce => {
+        if (!responce.ok) {
+          throw Error('Network response was is bad');
+        }
+        return responce.json();
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation: ', error);
+        return null;
+      }
+      );
   }
 }

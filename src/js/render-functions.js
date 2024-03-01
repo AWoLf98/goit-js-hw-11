@@ -19,10 +19,10 @@ export default class Render {
 
   showGalery(objData) {
     const gallery = document.querySelector(this.#selector);
-    
+
     gallery.innerHTML = '';
-    
-    if (!objData.total) {
+    // у випадку помилки повертає null=false і завдяки || objData.total не перевірятиме одже помилки не буде
+    if (!objData || !objData.total) {
       this.showErrorMsg();
       return;
     }
