@@ -18,6 +18,8 @@ export default class Render {
   }
 
   showGalery(objData) {
+    const gallery = document.querySelector(this.#selector);
+    
     gallery.innerHTML = '';
     
     if (!objData.total) {
@@ -25,7 +27,6 @@ export default class Render {
       return;
     }
     
-    const gallery = document.querySelector(this.#selector);
     
     gallery.innerHTML = objData.hits.reduce(
       (accumulator, currentValue) => {
