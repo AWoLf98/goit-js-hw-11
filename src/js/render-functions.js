@@ -97,7 +97,7 @@ export default class Render {
       color: '#EF4040',
       iconText: 'Close',
       iconColor: '#FAFAFB',
-      iconUrl: 'src/img/button-x.svg',
+      iconUrl: 'img/button-x.svg',
       maxWidth: '432',
       zindex: 999,
       close: true,
